@@ -48,7 +48,7 @@ void print_commands()
     printf("J - Efetuar jogada\n");
     printf("D - Desistir do jogo\n");
     printf("S - Salvar pontuação do jogo\n");
-    printf("L - Ler pontuação jogo\n");
+    printf("L - Ler pontuação do jogo\n");
     printf("Enter - Sair\n");
 }
 
@@ -515,7 +515,7 @@ int main()
         if (initialTemp == 0) // Verifica se é a primeira vez que o loop é executado
         {
             print_commands(); // Imprime os comandos
-            initialTemp = 1;
+            initialTemp++;    // Incrementa a variavel
         }
         printf("\n> "); // Imprime o prompt
 
@@ -528,12 +528,7 @@ int main()
             break; // Termina o loop
         }
 
-        print_title();                 // Imprime o titulo do jogo
-        if (board.gameStarted == true) // Verifica se o jogo ja foi iniciado
-        {
-            print_board(&board); // Imprime o tabuleiro
-            printf("\n");
-        }
+        print_title(); // Imprime o titulo do jogo
 
         char *operation = strtok(line, " "); // Recebe a operação
 
@@ -592,8 +587,6 @@ int main()
             {
                 board.difficulty = 0;                       // Atribui o valor 0 a dificuldade (significa que não é jogo automático
                 start_game(nameA, nameB, &board, &players); // Inicia o jogo
-                print_board(&board);                        // Imprime o tabuleiro
-                printf("\n");
                 printf("Jogo iniciado com sucesso.\n");
             }
         }
@@ -627,8 +620,6 @@ int main()
                     board.difficulty = 2; // Caso seja avançado, atribui o valor 2 a dificuldade
                 }
                 start_game(nameA, nameB, &board, &players); // Inicia o jogo
-                print_board(&board);                        // Imprime o tabuleiro
-                printf("\n");
                 printf("Jogo automático de nível %s iniciado com sucesso.\n", difficulty);
             }
         }
@@ -751,6 +742,13 @@ int main()
         }
         free(line);  // Liberta o espaço de memória presente na variável line
         line = NULL; // Atribuimos o valor NULL novamente a variavel
+
+        if (board.gameStarted == true) // Verifica se o jogo ja foi iniciado
+        {
+            printf("\n");
+            print_board(&board); // Imprime o tabuleiro
+            printf("\n");
+        }
     }
     if (line != NULL) // Caso a variavel line seja diferente de NULL libertamos essa memoria
     {
