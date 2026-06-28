@@ -12,11 +12,18 @@ Jogo Mancala em C — implementação de tabuleiro, jogadores e IA para a discip
 
 Jogo de tabuleiro Mancala com interface em linha de comando. Suporta jogo entre dois jogadores, jogo automático contra CPU com níveis de dificuldade (normal e avançado), registro de jogadores, histórico de vitórias/derrotas/empates e persistência de dados em ficheiro.
 
+## Requisitos
+
+| Ferramenta | Versão mínima |
+| ---------- | ------------- |
+| GCC        | 9+            |
+| Make       | 4+            |
+
 ## Como executar
 
 ```bash
 make
-./bin/mancala
+./bin/main
 ```
 
 O jogo corre em terminal — digite `C` para ver os comandos disponíveis.
